@@ -60,4 +60,27 @@ public class QuantityMeasurementAppTest {
         QuantityMeasurementApp.Inch i1 = new QuantityMeasurementApp.Inch(12.0);
         assertTrue(i1.equals(i1));
     }
+
+    // UC3 - Feet & Inch comparison
+
+    @Test
+    void given1FeetAnd12Inch_WhenCompared_ShouldReturnTrue() {
+        QuantityMeasurementApp.Feet feet = new QuantityMeasurementApp.Feet(1.0);
+        QuantityMeasurementApp.Inch inch = new QuantityMeasurementApp.Inch(12.0);
+        assertTrue(feet.equals(inch));
+    }
+
+    @Test
+    void given2FeetAnd24Inch_WhenCompared_ShouldReturnTrue() {
+        QuantityMeasurementApp.Feet feet = new QuantityMeasurementApp.Feet(2.0);
+        QuantityMeasurementApp.Inch inch = new QuantityMeasurementApp.Inch(24.0);
+        assertTrue(feet.equals(inch));
+    }
+
+    @Test
+    void given1FeetAnd24Inch_WhenCompared_ShouldReturnFalse() {
+        QuantityMeasurementApp.Feet feet = new QuantityMeasurementApp.Feet(1.0);
+        QuantityMeasurementApp.Inch inch = new QuantityMeasurementApp.Inch(24.0);
+        assertFalse(feet.equals(inch));
+    }
 }
