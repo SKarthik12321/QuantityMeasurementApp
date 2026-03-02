@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.bridgelabz.QuantityMeasurementAppTest" time="0.042" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.bridgelabz.QuantityMeasurementAppTest" time="0.086" tests="16" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/25.0.2/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/skarthik/IdeaProjects/QuantityMeasurementApp/target/surefire/surefirebooter-20260302105310267_3.jar /Users/skarthik/IdeaProjects/QuantityMeasurementApp/target/surefire 2026-03-02T10-53-10_192-jvmRun1 surefire-20260302105310267_1tmp surefire_0-20260302105310267_2tmp"/>
+    <property name="sun.java.command" value="/Users/skarthik/IdeaProjects/QuantityMeasurementApp/target/surefire/surefirebooter-20260302105843730_3.jar /Users/skarthik/IdeaProjects/QuantityMeasurementApp/target/surefire 2026-03-02T10-58-43_641-jvmRun1 surefire-20260302105843730_1tmp surefire_0-20260302105843730_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/skarthik/IdeaProjects/QuantityMeasurementApp/target/test-classes:/Users/skarthik/IdeaProjects/QuantityMeasurementApp/target/classes:/Users/skarthik/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.0/junit-jupiter-5.10.0.jar:/Users/skarthik/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/Users/skarthik/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/skarthik/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/Users/skarthik/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/skarthik/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.0/junit-jupiter-params-5.10.0.jar:/Users/skarthik/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/Users/skarthik/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/skarthik/IdeaProjects/QuantityMeasurementApp/target/surefire/surefirebooter-20260302105310267_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/skarthik/IdeaProjects/QuantityMeasurementApp/target/surefire/surefirebooter-20260302105843730_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="25.0.2"/>
@@ -59,9 +59,20 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testAddition_Commutative_WithTarget" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.017"/>
-  <testcase name="testAddition_ExplicitTarget_Inches" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
-  <testcase name="testAddition_ExplicitTarget_Yards" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
-  <testcase name="testAddition_NullTarget_Throws" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
-  <testcase name="testAddition_ExplicitTarget_Feet" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.0"/>
+  <testcase name="testAdditionWithTargetUnitFeet" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.029"/>
+  <testcase name="testAdditionDefaultUnit" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
+  <testcase name="testNullUnit" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.003"/>
+  <testcase name="testAdditionWithTargetUnitInches" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
+  <testcase name="testFeetEquality" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.002"/>
+  <testcase name="testNegativeAddition" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
+  <testcase name="testConvertYardToFeet" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
+  <testcase name="testYardEqualsThreeFeet" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
+  <testcase name="testRoundTripConversion" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
+  <testcase name="testFeetInchesEquality" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
+  <testcase name="testConvertFeetToInches" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
+  <testcase name="testCommutativity" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
+  <testcase name="testAdditionWithTargetUnitYards" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
+  <testcase name="testInvalidValue" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
+  <testcase name="testCentimeterEqualsInches" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
+  <testcase name="testZeroAddition" classname="com.bridgelabz.QuantityMeasurementAppTest" time="0.001"/>
 </testsuite>
