@@ -12,7 +12,6 @@ public class QuantityMeasurementDatabaseRepository implements IQuantityMeasureme
 
     @Override
     public void save(QuantityMeasurementEntity entity) {
-
         String sql = "INSERT INTO quantity_measurement(value, unit, operation, result) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = ConnectionPool.getConnection();
@@ -42,11 +41,12 @@ public class QuantityMeasurementDatabaseRepository implements IQuantityMeasureme
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                QuantityMeasurementEntity e = new QuantityMeasurementEntity();
-                e.setValue(rs.getDouble("value"));
-                e.setUnit(rs.getString("unit"));
-                e.setOperation(rs.getString("operation"));
-                e.setResult(rs.getDouble("result"));
+                QuantityMeasurementEntity e = new QuantityMeasurementEntity(
+                        rs.getDouble("value"),
+                        rs.getString("unit"),
+                        rs.getString("operation"),
+                        rs.getDouble("result")
+                );
                 list.add(e);
             }
 
@@ -59,7 +59,6 @@ public class QuantityMeasurementDatabaseRepository implements IQuantityMeasureme
 
     @Override
     public void deleteAll() {
-
         try (Connection conn = ConnectionPool.getConnection();
              Statement stmt = conn.createStatement()) {
 

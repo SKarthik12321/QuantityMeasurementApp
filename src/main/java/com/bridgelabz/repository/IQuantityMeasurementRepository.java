@@ -9,5 +9,10 @@ public interface IQuantityMeasurementRepository {
 
     List<QuantityMeasurementEntity> findAll();
 
-    void deleteAll();   // IMPORTANT (so @Override works)
+    void deleteAll();
+
+    // UC16 extra (optional but expected)
+    default int getTotalCount() {
+        return findAll().size();
+    }
 }
