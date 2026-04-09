@@ -4,15 +4,11 @@ com/bridgelabz/TemperatureUnit$3.class
 com/bridgelabz/Quantity.class
 com/bridgelabz/exception/QuantityMeasurementException.class
 com/bridgelabz/LengthUnit.class
-com/bridgelabz/QuantityMeasurementApp.class
 com/bridgelabz/exception/DatabaseException.class
 com/bridgelabz/repository/QuantityMeasurementRepository.class
 com/bridgelabz/UnitFactory.class
 com/bridgelabz/dto/QuantityDTO.class
-com/bridgelabz/repository/QuantityMeasurementDatabaseRepository.class
-com/bridgelabz/repository/IQuantityMeasurementRepository.class
 com/bridgelabz/TemperatureUnit$2.class
-com/bridgelabz/repository/impl/QuantityMeasurementCacheRepository.class
 com/bridgelabz/VolumeUnit.class
 com/bridgelabz/QuantityMeasurementApplication.class
 com/bridgelabz/model/QuantityModel.class

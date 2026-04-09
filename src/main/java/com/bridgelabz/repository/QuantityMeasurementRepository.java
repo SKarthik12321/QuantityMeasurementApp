@@ -2,9 +2,9 @@ package com.bridgelabz.repository;
 
 import com.bridgelabz.model.QuantityMeasurementEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
-public interface QuantityMeasurementRepository extends JpaRepository<QuantityMeasurementEntity, Long> {
-
-    List<QuantityMeasurementEntity> findByOperation(String operation);
+@Repository
+public interface QuantityMeasurementRepository
+        extends JpaRepository<QuantityMeasurementEntity, Long> {
 }

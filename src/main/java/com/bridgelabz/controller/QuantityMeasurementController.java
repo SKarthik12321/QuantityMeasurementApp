@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/quantity")
+@RequestMapping("/api/quantities")
 public class QuantityMeasurementController {
 
     @Autowired
@@ -25,12 +25,8 @@ public class QuantityMeasurementController {
     }
 
     @DeleteMapping
-    public void deleteAll() {
+    public String deleteAll() {
         service.deleteAll();
-    }
-
-    @GetMapping("/count")
-    public int count() {
-        return service.getTotalCount();
+        return "Deleted all records";
     }
 }
