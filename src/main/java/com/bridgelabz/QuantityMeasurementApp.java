@@ -3,8 +3,7 @@ package com.bridgelabz;
 import com.bridgelabz.controller.QuantityMeasurementController;
 import com.bridgelabz.dto.QuantityDTO;
 import com.bridgelabz.repository.IQuantityMeasurementRepository;
-import com.bridgelabz.repository.QuantityMeasurementCacheRepository;
-import com.bridgelabz.service.IQuantityMeasurementService;
+import com.bridgelabz.repository.impl.QuantityMeasurementCacheRepository;import com.bridgelabz.service.IQuantityMeasurementService;
 import com.bridgelabz.service.impl.QuantityMeasurementServiceImpl;
 public class QuantityMeasurementApp {
 

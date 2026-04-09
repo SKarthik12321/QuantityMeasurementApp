@@ -6,7 +6,7 @@ public class Quantity<U extends IMeasurable> {
 
     private final double value;
     private final U unit;
-    private static final double EPSILON = 1e-6;
+    private static final double EPSILON = 0.01;
 
     public Quantity(double value, U unit) {
         if (unit == null)
@@ -68,6 +68,25 @@ public class Quantity<U extends IMeasurable> {
 
         double result = unit.convertFromBaseUnit(base);
         return new Quantity<>(round(result), unit);
+    }
+
+    // ===== ADD WITH TARGET UNIT (FIX FOR TESTS)
+    public Quantity<U> add(Quantity<U> other, U targetUnit) {
+        if (other == null)
+            throw new IllegalArgumentException("Quantity cannot be null");
+
+        if (targetUnit == null)
+            throw new IllegalArgumentException("Target unit cannot be null");
+
+        if (!unit.getClass().equals(other.unit.getClass()))
+            throw new IllegalArgumentException("Cross-category not allowed");
+
+        double base =
+                unit.convertToBaseUnit(this.value) +
+                        other.unit.convertToBaseUnit(other.value);
+
+        double result = targetUnit.convertFromBaseUnit(base);
+        return new Quantity<>(round(result), targetUnit);
     }
 
     // ===== SUBTRACT

@@ -1,7 +1,6 @@
 package com.bridgelabz.repository;
 
 import com.bridgelabz.entity.QuantityMeasurementEntity;
-
 import java.util.List;
 
 public interface IQuantityMeasurementRepository {
@@ -9,4 +8,6 @@ public interface IQuantityMeasurementRepository {
     void save(QuantityMeasurementEntity entity);
 
     List<QuantityMeasurementEntity> findAll();
+
+    void deleteAll();   // IMPORTANT (so @Override works)
 }
