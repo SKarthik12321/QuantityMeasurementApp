@@ -1,18 +1,20 @@
 package com.bridgelabz.controller;
 
-import com.bridgelabz.model.QuantityMeasurementEntity;
+import com.bridgelabz.entity.QuantityMeasurementEntity;
 import com.bridgelabz.service.IQuantityMeasurementService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/quantities")
+@RequestMapping("/api/quantity")
 public class QuantityMeasurementController {
 
-    @Autowired
-    private IQuantityMeasurementService service;
+    private final IQuantityMeasurementService service;
+
+    public QuantityMeasurementController(IQuantityMeasurementService service) {
+        this.service = service;
+    }
 
     @PostMapping
     public QuantityMeasurementEntity save(@RequestBody QuantityMeasurementEntity entity) {
@@ -24,9 +26,8 @@ public class QuantityMeasurementController {
         return service.getAll();
     }
 
-    @DeleteMapping
-    public String deleteAll() {
-        service.deleteAll();
-        return "Deleted all records";
+    @GetMapping("/count")
+    public long count() {
+        return service.getTotalCount();
     }
 }

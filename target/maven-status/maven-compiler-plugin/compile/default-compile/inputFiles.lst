@@ -1,9 +1,7 @@
 /Users/skarthik/IdeaProjects/QuantityMeasurementApp/src/main/java/com/bridgelabz/util/ConnectionPool.java
 /Users/skarthik/IdeaProjects/QuantityMeasurementApp/src/main/java/com/bridgelabz/dto/QuantityDTO.java
 /Users/skarthik/IdeaProjects/QuantityMeasurementApp/src/main/java/com/bridgelabz/Quantity.java
-/Users/skarthik/IdeaProjects/QuantityMeasurementApp/src/main/java/com/bridgelabz/model/QuantityMeasurementEntity.java
 /Users/skarthik/IdeaProjects/QuantityMeasurementApp/src/main/java/com/bridgelabz/TemperatureUnit.java
-/Users/skarthik/IdeaProjects/QuantityMeasurementApp/src/main/java/com/bridgelabz/model/QuantityModel.java
 /Users/skarthik/IdeaProjects/QuantityMeasurementApp/src/main/java/com/bridgelabz/UnitFactory.java
 /Users/skarthik/IdeaProjects/QuantityMeasurementApp/src/main/java/com/bridgelabz/IMeasurable.java
 /Users/skarthik/IdeaProjects/QuantityMeasurementApp/src/main/java/com/bridgelabz/service/IQuantityMeasurementService.java

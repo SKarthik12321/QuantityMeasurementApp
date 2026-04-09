@@ -1,9 +1,8 @@
 package com.bridgelabz.service.impl;
 
-import com.bridgelabz.model.QuantityMeasurementEntity;
+import com.bridgelabz.entity.QuantityMeasurementEntity;
 import com.bridgelabz.repository.QuantityMeasurementRepository;
 import com.bridgelabz.service.IQuantityMeasurementService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.List;
 @Service
 public class QuantityMeasurementServiceImpl implements IQuantityMeasurementService {
 
-    @Autowired
-    private QuantityMeasurementRepository repository;
+    private final QuantityMeasurementRepository repository;
+
+    public QuantityMeasurementServiceImpl(QuantityMeasurementRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public QuantityMeasurementEntity save(QuantityMeasurementEntity entity) {
@@ -25,12 +27,7 @@ public class QuantityMeasurementServiceImpl implements IQuantityMeasurementServi
     }
 
     @Override
-    public void deleteAll() {
-        repository.deleteAll();
-    }
-
-    @Override
-    public int getTotalCount() {
-        return (int) repository.count();
+    public long getTotalCount() {
+        return repository.count();
     }
 }

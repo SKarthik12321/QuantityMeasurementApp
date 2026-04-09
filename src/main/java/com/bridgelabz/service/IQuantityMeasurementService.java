@@ -1,6 +1,6 @@
 package com.bridgelabz.service;
 
-import com.bridgelabz.model.QuantityMeasurementEntity;
+import com.bridgelabz.entity.QuantityMeasurementEntity;
 import java.util.List;
 
 public interface IQuantityMeasurementService {
@@ -9,7 +9,5 @@ public interface IQuantityMeasurementService {
 
     List<QuantityMeasurementEntity> getAll();
 
-    void deleteAll();
-
-    int getTotalCount();
+    long getTotalCount();
 }

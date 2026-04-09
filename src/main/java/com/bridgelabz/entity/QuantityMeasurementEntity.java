@@ -1,6 +1,14 @@
 package com.bridgelabz.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "quantity_measurement")
 public class QuantityMeasurementEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private double value;
     private String unit;
@@ -14,6 +22,10 @@ public class QuantityMeasurementEntity {
         this.unit = unit;
         this.operation = operation;
         this.result = result;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public double getValue() {
