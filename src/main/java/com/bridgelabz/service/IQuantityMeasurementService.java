@@ -1,21 +1,16 @@
 package com.bridgelabz.service;
 
-import com.bridgelabz.Quantity;
-import com.bridgelabz.IMeasurable;
+import com.bridgelabz.dto.QuantityDTO;
 
 public interface IQuantityMeasurementService {
 
-    <U extends IMeasurable> boolean compare(Quantity<U> q1, Quantity<U> q2);
+    QuantityDTO compare(QuantityDTO q1, QuantityDTO q2);
 
-    <U extends IMeasurable> Quantity<U> convert(Quantity<U> quantity, U targetUnit);
+    QuantityDTO convert(QuantityDTO input, String targetUnit);
 
-    <U extends IMeasurable> Quantity<U> add(Quantity<U> q1, Quantity<U> q2);
+    QuantityDTO add(QuantityDTO q1, QuantityDTO q2);
 
-    <U extends IMeasurable> Quantity<U> add(Quantity<U> q1, Quantity<U> q2, U targetUnit);
+    QuantityDTO subtract(QuantityDTO q1, QuantityDTO q2);
 
-    <U extends IMeasurable> Quantity<U> subtract(Quantity<U> q1, Quantity<U> q2);
-
-    <U extends IMeasurable> Quantity<U> subtract(Quantity<U> q1, Quantity<U> q2, U targetUnit);
-
-    <U extends IMeasurable> double divide(Quantity<U> q1, Quantity<U> q2);
+    QuantityDTO divide(QuantityDTO q1, QuantityDTO q2);
 }
