@@ -1,9 +1,9 @@
 package com.bridgelabz;
 
-import com.bridgelabz.dto.QuantityDTO;
 import com.bridgelabz.repository.IQuantityMeasurementRepository;
 import com.bridgelabz.repository.QuantityMeasurementDatabaseRepository;
 import com.bridgelabz.repository.impl.QuantityMeasurementCacheRepository;
+import com.bridgelabz.service.IQuantityMeasurementService;
 import com.bridgelabz.service.impl.QuantityMeasurementServiceImpl;
 import com.bridgelabz.util.ApplicationConfig;
 
@@ -13,21 +13,18 @@ public class QuantityMeasurementApp {
 
         IQuantityMeasurementRepository repository;
 
-        if (ApplicationConfig.getRepositoryType().equalsIgnoreCase("db")) {
+        if ("db".equalsIgnoreCase(ApplicationConfig.getRepositoryType())) {
             repository = new QuantityMeasurementDatabaseRepository();
         } else {
-            repository = QuantityMeasurementCacheRepository.getInstance();
+            repository = new QuantityMeasurementCacheRepository();
         }
 
-        QuantityMeasurementServiceImpl service =
-                new QuantityMeasurementServiceImpl(repository);
+        IQuantityMeasurementService service = new QuantityMeasurementServiceImpl(repository);
 
-        service.compare(
-                new QuantityDTO(1.0, "FEET"),
-                new QuantityDTO(12.0, "INCH")
-        );
+        System.out.println("Total Records: " + repository.getTotalCount());
 
-        System.out.println(repository.findAll());
-        System.out.println("COUNT = " + repository.getTotalCount());
+        repository.deleteAll();
+
+        System.out.println("After Delete: " + repository.getTotalCount());
     }
 }

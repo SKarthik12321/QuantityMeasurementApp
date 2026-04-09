@@ -11,15 +11,12 @@ public interface IQuantityMeasurementRepository {
 
     void deleteAll();
 
-    List<QuantityMeasurementEntity> findByOperation(String operation);
-
-    List<QuantityMeasurementEntity> findByUnit(String unit);
-
     int getTotalCount();
 
     default String getPoolStatistics() {
         return "N/A";
     }
 
-    default void releaseResources() {}
+    default void releaseResources() {
+    }
 }
