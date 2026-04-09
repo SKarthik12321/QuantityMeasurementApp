@@ -1,65 +1,87 @@
 package com.bridgelabz.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 public class QuantityMeasurementEntity implements Serializable {
 
-    private Long id;
-    private double value;
-    private String unit;
+    private static final long serialVersionUID = 1L;
+
+    private Double value1;
+    private String unit1;
+
+    private Double value2;
+    private String unit2;
+
     private String operation;
-    private LocalDateTime timestamp;
 
-    public QuantityMeasurementEntity() {
-        this.timestamp = LocalDateTime.now();
-    }
+    private Double result;
+    private String resultUnit;
 
-    public QuantityMeasurementEntity(Long id, double value, String unit, String operation) {
-        this.id = id;
-        this.value = value;
-        this.unit = unit;
+    private boolean error;
+    private String errorMessage;
+
+    // Constructor for single operand (conversion)
+    public QuantityMeasurementEntity(Double value1, String unit1, String operation,
+                                     Double result, String resultUnit) {
+        this.value1 = value1;
+        this.unit1 = unit1;
         this.operation = operation;
-        this.timestamp = LocalDateTime.now();
+        this.result = result;
+        this.resultUnit = resultUnit;
+        this.error = false;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public double getValue() {
-        return value;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public String getOperation() {
-        return operation;
-    }
-
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setValue(double value) {
-        this.value = value;
-    }
-
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
-    public void setOperation(String operation) {
+    // Constructor for two operands (add, subtract, compare, divide)
+    public QuantityMeasurementEntity(Double value1, String unit1,
+                                     Double value2, String unit2,
+                                     String operation,
+                                     Double result, String resultUnit) {
+        this.value1 = value1;
+        this.unit1 = unit1;
+        this.value2 = value2;
+        this.unit2 = unit2;
         this.operation = operation;
+        this.result = result;
+        this.resultUnit = resultUnit;
+        this.error = false;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
+    // Constructor for error
+    public QuantityMeasurementEntity(String operation, String errorMessage) {
+        this.operation = operation;
+        this.errorMessage = errorMessage;
+        this.error = true;
+    }
+
+    public boolean isError() {
+        return error;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public Double getResult() {
+        return result;
+    }
+
+    public String getResultUnit() {
+        return resultUnit;
+    }
+
+    @Override
+    public String toString() {
+        if (error) {
+            return "Error in " + operation + ": " + errorMessage;
+        }
+
+        if (value2 != null) {
+            return value1 + " " + unit1 + " " + operation + " " +
+                    value2 + " " + unit2 + " = " +
+                    result + " " + resultUnit;
+        }
+
+        return value1 + " " + unit1 + " " + operation + " = " +
+                result + " " + resultUnit;
     }
 }
