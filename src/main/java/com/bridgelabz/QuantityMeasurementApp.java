@@ -19,7 +19,7 @@ public class QuantityMeasurementApp {
             repository = new QuantityMeasurementCacheRepository();
         }
 
-        IQuantityMeasurementService service = new QuantityMeasurementServiceImpl(repository);
+        IQuantityMeasurementService service = new QuantityMeasurementServiceImpl();
 
         System.out.println("Total Records: " + repository.getTotalCount());
 

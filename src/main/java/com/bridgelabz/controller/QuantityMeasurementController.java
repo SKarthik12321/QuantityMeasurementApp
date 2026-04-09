@@ -1,45 +1,36 @@
 package com.bridgelabz.controller;
 
-import com.bridgelabz.dto.QuantityDTO;
+import com.bridgelabz.model.QuantityMeasurementEntity;
 import com.bridgelabz.service.IQuantityMeasurementService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/quantity")
 public class QuantityMeasurementController {
 
-    private final IQuantityMeasurementService service;
+    @Autowired
+    private IQuantityMeasurementService service;
 
-    public QuantityMeasurementController(IQuantityMeasurementService service) {
-        this.service = service;
+    @PostMapping
+    public QuantityMeasurementEntity save(@RequestBody QuantityMeasurementEntity entity) {
+        return service.save(entity);
     }
 
-    public String add(QuantityDTO q1, QuantityDTO q2) {
-        try {
-            return service.add(q1, q2).toString();
-        } catch (Exception e) {
-            return e.getMessage();
-        }
+    @GetMapping
+    public List<QuantityMeasurementEntity> getAll() {
+        return service.getAll();
     }
 
-    public String subtract(QuantityDTO q1, QuantityDTO q2) {
-        try {
-            return service.subtract(q1, q2).toString();
-        } catch (Exception e) {
-            return e.getMessage();
-        }
+    @DeleteMapping
+    public void deleteAll() {
+        service.deleteAll();
     }
 
-    public String convert(QuantityDTO q, String targetUnit) {
-        try {
-            return service.convert(q, targetUnit).toString();
-        } catch (Exception e) {
-            return e.getMessage();
-        }
-    }
-
-    public double divide(QuantityDTO q1, QuantityDTO q2) {
-        return service.divide(q1, q2);
-    }
-
-    public boolean compare(QuantityDTO q1, QuantityDTO q2) {
-        return service.compare(q1, q2);
+    @GetMapping("/count")
+    public int count() {
+        return service.getTotalCount();
     }
 }
