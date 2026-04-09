@@ -1,6 +1,7 @@
 package com.bridgelabz.repository;
 
 import com.bridgelabz.entity.QuantityMeasurementEntity;
+
 import java.util.List;
 
 public interface IQuantityMeasurementRepository {
@@ -11,8 +12,10 @@ public interface IQuantityMeasurementRepository {
 
     void deleteAll();
 
-    // UC16 extra (optional but expected)
-    default int getTotalCount() {
-        return findAll().size();
+    default String getPoolStatistics() {
+        return "N/A";
+    }
+
+    default void releaseResources() {
     }
 }

@@ -8,7 +8,8 @@ import java.util.List;
 
 public class QuantityMeasurementCacheRepository implements IQuantityMeasurementRepository {
 
-    private static final QuantityMeasurementCacheRepository instance = new QuantityMeasurementCacheRepository();
+    private static final QuantityMeasurementCacheRepository instance =
+            new QuantityMeasurementCacheRepository();
 
     private final List<QuantityMeasurementEntity> list = new ArrayList<>();
 

@@ -3,16 +3,33 @@ package com.bridgelabz;
 import com.bridgelabz.controller.QuantityMeasurementController;
 import com.bridgelabz.dto.QuantityDTO;
 import com.bridgelabz.repository.IQuantityMeasurementRepository;
-import com.bridgelabz.repository.impl.QuantityMeasurementCacheRepository;import com.bridgelabz.service.IQuantityMeasurementService;
+import com.bridgelabz.repository.QuantityMeasurementDatabaseRepository;
+import com.bridgelabz.repository.impl.QuantityMeasurementCacheRepository;
 import com.bridgelabz.service.impl.QuantityMeasurementServiceImpl;
+import com.bridgelabz.util.ApplicationConfig;
+
+import java.util.logging.Logger;
+
 public class QuantityMeasurementApp {
+
+    private static final Logger logger = Logger.getLogger(QuantityMeasurementApp.class.getName());
 
     public static void main(String[] args) {
 
-        IQuantityMeasurementRepository repository =
-                QuantityMeasurementCacheRepository.getInstance();
+        String repoType = ApplicationConfig.get("repository.type");
 
-        QuantityMeasurementServiceImpl service = new QuantityMeasurementServiceImpl();
+        IQuantityMeasurementRepository repository;
+
+        if ("db".equalsIgnoreCase(repoType)) {
+            repository = new QuantityMeasurementDatabaseRepository();
+            logger.info("Using DATABASE repository");
+        } else {
+            repository = QuantityMeasurementCacheRepository.getInstance();
+            logger.info("Using CACHE repository");
+        }
+
+        QuantityMeasurementServiceImpl service =
+                new QuantityMeasurementServiceImpl(repository);
 
         QuantityMeasurementController controller =
                 new QuantityMeasurementController(service);
@@ -20,15 +37,19 @@ public class QuantityMeasurementApp {
         QuantityDTO q1 = new QuantityDTO(1.0, "FEET");
         QuantityDTO q2 = new QuantityDTO(12.0, "INCHES");
 
-        System.out.println(controller.add(q1, q2));
-        System.out.println(controller.subtract(q1, q2));
-        System.out.println(controller.divide(q1, q2));
-        System.out.println(controller.convert(q1, "INCHES"));
-        System.out.println(controller.compare(q1, q2));
+        logger.info(controller.add(q1, q2).toString());
+        logger.info(controller.subtract(q1, q2).toString());
+        logger.info(String.valueOf(controller.divide(q1, q2)));
+        logger.info(controller.convert(q1, "INCHES").toString());
+        logger.info(String.valueOf(controller.compare(q1, q2)));
 
-        QuantityDTO t1 = new QuantityDTO(100.0, "CELSIUS");
-        QuantityDTO t2 = new QuantityDTO(50.0, "CELSIUS");
+        logger.info("----- STORED DATA -----");
+        repository.findAll().forEach(e -> logger.info(e.toString()));
 
-        System.out.println(controller.add(t1, t2));
+        repository.deleteAll();
+
+        try {
+            repository.releaseResources();
+        } catch (Exception ignored) {}
     }
 }
