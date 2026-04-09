@@ -1,15 +1,11 @@
 package com.bridgelabz.model;
 
-import com.bridgelabz.IMeasurable;
-
-public class QuantityModel<U extends IMeasurable> {
+public class QuantityModel {
 
     private double value;
-    private U unit;
+    private String unit;
 
-    public QuantityModel() {}
-
-    public QuantityModel(double value, U unit) {
+    public QuantityModel(double value, String unit) {
         this.value = value;
         this.unit = unit;
     }
@@ -18,23 +14,7 @@ public class QuantityModel<U extends IMeasurable> {
         return value;
     }
 
-    public void setValue(double value) {
-        this.value = value;
-    }
-
-    public U getUnit() {
+    public String getUnit() {
         return unit;
-    }
-
-    public void setUnit(U unit) {
-        this.unit = unit;
-    }
-
-    @Override
-    public String toString() {
-        return "QuantityModel{" +
-                "value=" + value +
-                ", unit=" + unit +
-                '}';
     }
 }
