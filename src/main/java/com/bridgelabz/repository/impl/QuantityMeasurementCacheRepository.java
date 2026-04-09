@@ -8,15 +8,13 @@ import java.util.List;
 
 public class QuantityMeasurementCacheRepository implements IQuantityMeasurementRepository {
 
-    private static final QuantityMeasurementCacheRepository instance =
-            new QuantityMeasurementCacheRepository();
-
+    private static final QuantityMeasurementCacheRepository INSTANCE = new QuantityMeasurementCacheRepository();
     private final List<QuantityMeasurementEntity> list = new ArrayList<>();
 
     private QuantityMeasurementCacheRepository() {}
 
     public static QuantityMeasurementCacheRepository getInstance() {
-        return instance;
+        return INSTANCE;
     }
 
     @Override
@@ -32,5 +30,32 @@ public class QuantityMeasurementCacheRepository implements IQuantityMeasurementR
     @Override
     public void deleteAll() {
         list.clear();
+    }
+
+    @Override
+    public List<QuantityMeasurementEntity> findByOperation(String operation) {
+        List<QuantityMeasurementEntity> result = new ArrayList<>();
+        for (QuantityMeasurementEntity e : list) {
+            if (e.getOperation().equalsIgnoreCase(operation)) {
+                result.add(e);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<QuantityMeasurementEntity> findByUnit(String unit) {
+        List<QuantityMeasurementEntity> result = new ArrayList<>();
+        for (QuantityMeasurementEntity e : list) {
+            if (e.getUnit().equalsIgnoreCase(unit)) {
+                result.add(e);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public int getTotalCount() {
+        return list.size();
     }
 }

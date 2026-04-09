@@ -12,14 +12,27 @@ public class ApplicationConfig {
                 .getClassLoader()
                 .getResourceAsStream("application.properties")) {
 
-            props.load(input);
+            if (input != null) {
+                props.load(input);
+            }
 
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to load config");
-        }
+        } catch (Exception ignored) {}
     }
 
-    public static String get(String key) {
-        return props.getProperty(key);
+    public static String getRepositoryType() {
+        return System.getProperty("repo",
+                props.getProperty("repository.type", "cache"));
+    }
+
+    public static String getDbUrl() {
+        return props.getProperty("db.url");
+    }
+
+    public static String getDbUser() {
+        return props.getProperty("db.user");
+    }
+
+    public static String getDbPassword() {
+        return props.getProperty("db.password");
     }
 }
