@@ -10,15 +10,19 @@ public class QuantityMeasurementEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private double value;
+    private double val;
+
     private String unit;
+
     private String operation;
+
     private double result;
 
-    public QuantityMeasurementEntity() {}
+    public QuantityMeasurementEntity() {
+    }
 
-    public QuantityMeasurementEntity(double value, String unit, String operation, double result) {
-        this.value = value;
+    public QuantityMeasurementEntity(double val, String unit, String operation, double result) {
+        this.val = val;
         this.unit = unit;
         this.operation = operation;
         this.result = result;
@@ -28,12 +32,16 @@ public class QuantityMeasurementEntity {
         return id;
     }
 
-    public double getValue() {
-        return value;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public double getVal() {
+        return val;
+    }
+
+    public void setVal(double val) {
+        this.val = val;
     }
 
     public String getUnit() {
